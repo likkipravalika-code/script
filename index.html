@@ -4,46 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script>
-//         const add=(a,b)=>{
-//             return document.write('<br>the a sub ${a+b}')
-//         }
-//         add(2,3) 
-//         add(6,6)
-//         const sub=(a,b)=>{
-//             return document.write(a-b)
-//         }
-//         sub(5,3)
-//         setInterval(()=>
-//     {add(2,3)}
-//     ,3000)
-//     setTimeout(()=>
-// {add(2,3)},
-// 4000)
-    const count=()=>{
-        const add=()=>{
-            for(a=0;a<10;a++) {
-                document.write(`${a}`)
-            }
-        }
-    
-//  const count=()=>{
-//     const add=()=>{
-
-// a=0
-// while(a<2000){
-//     document.write(`<ul><li>${a}</li></ul>`)
-//     a++;
-// }}
-   
-  document.getElementById("counter").innerHTML = `${add()}`
-  }
-</script>
 </head>
 <body>
-    <button id="counter"></button>
-<button onclick="setInterval(() => {
-    count()
-}, 1000); ">count</button>
+    <form onsubmit="handleSubmit(event)">
+        <label>First name:</label><br>
+        <input type="text" id="user" name="username"><br>
+        <label>Email:</label><br>
+        <input type="email" id="email" name="email"><br>
+        <label>Message:</label><br>
+        <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            const user = document.getElementById("user").value;
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("message").value;
+            if (user== "" || email=="" || message=="") {
+                alert("Please fill all the fields.");
+            } else {
+                const data =[ {
+                    username: user,
+                    email: email,
+                    message: message
+                }];
+                console.log(JSON.stringify(data));
+            }
+        }
+        // const teacher = {
+        //    "name":"sanjay",
+        //    "age":21,
+        //    "city":"hyderabad"
+        // }
+        // console.log(teacher);
+        
+    </script>
 </body>
 </html>
